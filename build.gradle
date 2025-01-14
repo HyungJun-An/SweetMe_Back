@@ -35,6 +35,9 @@ dependencies {
     annotationProcessor 'jakarta.persistence:jakarta.persistence-api'
     annotationProcessor 'jakarta.annotation:jakarta.annotation-api'
 
+    /* WebSocket 의존성 추가 */
+    implementation 'org.springframework.boot:spring-boot-starter-websocket'
+    
     /* Swagger 의존성 추가 */
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0'
 
