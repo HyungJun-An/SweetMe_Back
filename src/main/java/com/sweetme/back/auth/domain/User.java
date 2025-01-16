@@ -4,8 +4,7 @@ import com.sweetme.back.board.domain.Board;
 import com.sweetme.back.common.domain.BaseEntity;
 import com.sweetme.back.studygroup.domain.Study;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +13,10 @@ import java.util.List;
 @Table(name = "tbl_user")
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString(exclude = {"studyLikes", "boardLikes"})
 public class User extends BaseEntity {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
@@ -31,10 +34,12 @@ public class User extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
+    @Builder.Default
     private UserStatus status = UserStatus.ACTIVE;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
+    @Builder.Default
     private UserRole role = UserRole.ROLE_USER;
 
     private String password;
@@ -52,8 +57,10 @@ public class User extends BaseEntity {
     }
 
     @ManyToMany(mappedBy = "userStudyLikes")
+    @Builder.Default
     private List<Study> studyLikes = new ArrayList<>();
 
     @ManyToMany(mappedBy = "userBoardLikes")
+    @Builder.Default
     private List<Board> boardLikes = new ArrayList<>();
 }
