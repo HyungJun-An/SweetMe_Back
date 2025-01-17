@@ -1,5 +1,6 @@
 package com.sweetme.back.auth.dto;
 
+import com.sweetme.back.common.util.JWTUtil;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -49,5 +50,17 @@ public class UserDTO extends User {
         dataMap.put("role", role);
 
         return dataMap;
+    }
+
+    public static UserDTO fromClaims(Map<String, Object> claims) {
+
+        String email = (String) claims.get("email");
+        String password = (String) claims.get("password");
+        String nickname = (String) claims.get("nickname");
+        LoginType loginType = LoginType.valueOf((String) claims.get("loginType"));
+        UserStatus status = UserStatus.valueOf((String) claims.get("status"));
+        UserRole role = UserRole.valueOf((String) claims.get("role"));
+
+        return new UserDTO(email, password, nickname, loginType, status, role);
     }
 }
