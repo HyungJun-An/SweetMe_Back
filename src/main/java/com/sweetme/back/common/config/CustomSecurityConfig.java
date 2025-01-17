@@ -1,5 +1,6 @@
 package com.sweetme.back.common.config;
 
+import com.sweetme.back.auth.service.APILoginSuccessHandler;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.context.annotation.Bean;
@@ -38,7 +39,10 @@ public class CustomSecurityConfig {
 
         http.csrf(config -> config.disable()); // csrf 토큰 미사용 설정(API 는 세션 쿠키 대신 JWT 를 사용하므로 CSRF 공격의 대상이 아님)
 
-        http.formLogin(config -> config.loginPage("/auth/login"));
+        http.formLogin(config -> {
+            config.loginPage("/auth/login");
+            config.successHandler(new APILoginSuccessHandler());
+        });
 
         return http.build();
     }
