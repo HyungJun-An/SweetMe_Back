@@ -38,6 +38,8 @@ public class CustomSecurityConfig {
 
         http.csrf(config -> config.disable()); // csrf 토큰 미사용 설정(API 는 세션 쿠키 대신 JWT 를 사용하므로 CSRF 공격의 대상이 아님)
 
+        http.formLogin(config -> config.loginPage("/auth/login"));
+
         return http.build();
     }
 
