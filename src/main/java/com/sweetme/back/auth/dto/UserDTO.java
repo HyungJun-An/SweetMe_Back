@@ -20,26 +20,13 @@ public class UserDTO extends User {
     private String email;
     private String password;
     private String nickname;
-    private String loginType;
-    private String status;
-    private String role;
+    private LoginType loginType;
+    private UserStatus status;
+    private UserRole role;
 
-//    // 회원 생성
-//    public static UserDTO createUser(String email, String password, String nickname,
-//                                     LoginType loginType, UserStatus userStatus, UserRole userRole) {
-//        return new UserDTO(email, password, nickname, loginType, "ROLE_USER");
-//    }
-//
-//    // 관리자 생성
-//    public static UserDTO createAdmin(String email, String password, String nickname,
-//                                      LoginType loginType, UserStatus userStatus, UserRole userRole) {
-//        return new UserDTO(email, password, nickname, loginType, "ROLE_ADMIN");
-//    }
-
-    // 생성자를 private 으로 만들어 객체 생성 제어
-    private UserDTO(String email, String password, String nickname,
-                    String loginType, String status, String role) {
-        super(email, password, Collections.singleton(new SimpleGrantedAuthority(role)));
+    public UserDTO(String email, String password, String nickname,
+                    LoginType loginType, UserStatus status, UserRole role) {
+        super(email, password, Collections.singleton(new SimpleGrantedAuthority(role.name())));
 
         this.email = email;
         this.password = password;
