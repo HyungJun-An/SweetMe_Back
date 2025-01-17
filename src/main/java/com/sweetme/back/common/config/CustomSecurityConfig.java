@@ -2,6 +2,7 @@ package com.sweetme.back.common.config;
 
 import com.sweetme.back.auth.service.APILoginFailureHandler;
 import com.sweetme.back.auth.service.APILoginSuccessHandler;
+import com.sweetme.back.auth.service.CustomAccessDeniedHandler;
 import com.sweetme.back.auth.service.JWTCheckFilter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -51,6 +52,10 @@ public class CustomSecurityConfig {
         });
 
         http.addFilterBefore(new JWTCheckFilter(), UsernamePasswordAuthenticationFilter.class); // JWT 체크
+
+        http.exceptionHandling(config -> {
+            config.accessDeniedHandler(new CustomAccessDeniedHandler()); // 권한이 없는 사용자일 경우
+        });
 
         return http.build();
     }
