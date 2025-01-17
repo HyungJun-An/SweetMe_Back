@@ -63,4 +63,20 @@ public class User extends BaseEntity {
     @ManyToMany(mappedBy = "userBoardLikes")
     @Builder.Default
     private List<Board> boardLikes = new ArrayList<>();
+
+    public void changeRole(UserRole role) {
+        this.role = role;
+    }
+
+    public void changeStatus(UserStatus status) {
+        this.status = status;
+    }
+
+    public void changeNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public void changePassword(String password) {
+        this.password = password;
+    }
 }
