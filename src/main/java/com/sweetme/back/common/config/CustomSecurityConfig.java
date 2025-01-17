@@ -1,5 +1,6 @@
 package com.sweetme.back.common.config;
 
+import com.sweetme.back.auth.service.APILoginFailureHandler;
 import com.sweetme.back.auth.service.APILoginSuccessHandler;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -42,6 +43,7 @@ public class CustomSecurityConfig {
         http.formLogin(config -> {
             config.loginPage("/auth/login");
             config.successHandler(new APILoginSuccessHandler());
+            config.failureHandler(new APILoginFailureHandler());
         });
 
         return http.build();
