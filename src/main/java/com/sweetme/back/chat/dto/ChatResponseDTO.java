@@ -16,6 +16,6 @@ public class ChatResponseDTO {
     public ChatResponseDTO(Chat chat) {
         this.userId = chat.getUser().getId();
         this.message = chat.getMessage();
-        this.createdAt = chat.getUser().getCreatedAt();
+        this.createdAt = chat.getCreatedAt();
     }
 }
