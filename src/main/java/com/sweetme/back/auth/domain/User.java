@@ -1,5 +1,6 @@
 package com.sweetme.back.auth.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sweetme.back.board.domain.Board;
 import com.sweetme.back.common.domain.BaseEntity;
 import com.sweetme.back.studygroup.domain.Study;
