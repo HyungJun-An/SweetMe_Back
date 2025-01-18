@@ -52,6 +52,7 @@ public class UserDTO extends User {
         return dataMap;
     }
 
+    // claims 로부터 UserDTO 생성
     public static UserDTO fromClaims(Map<String, Object> claims) {
 
         String email = (String) claims.get("email");

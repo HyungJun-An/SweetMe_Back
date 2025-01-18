@@ -42,6 +42,10 @@ public class JWTCheckFilter extends OncePerRequestFilter {
             if (path.equals("/auth/login")) {
                 return true;
             }
+            if (path.equals("/auth/refresh")) {
+                return true;
+            }
+
             return false;
         }
 
@@ -72,7 +76,7 @@ public class JWTCheckFilter extends OncePerRequestFilter {
 
         String authHeaderStr = request.getHeader("Authorization");
 
-        log.info(authHeaderStr);
+        log.info("authHeaderStr: " + authHeaderStr);
 
         try {
             //Bearer "accessToken"
