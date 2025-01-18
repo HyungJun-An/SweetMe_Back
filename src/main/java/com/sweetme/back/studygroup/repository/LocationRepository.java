@@ -1,6 +1,5 @@
 package com.sweetme.back.studygroup.repository;
 
-
 import com.sweetme.back.studygroup.domain.Location;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -38,4 +37,5 @@ public interface LocationRepository extends JpaRepository<Location, Long> {
 //
 //    // 특정 도시에 속한 동네인지 확인
 //    boolean existByParentIdAndNameAndType(Long parentId, String name, Location.LocationType type);
+
 }
